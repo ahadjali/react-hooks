@@ -1,0 +1,9 @@
+.todo-list{
+    display: flex;
+    margin: auto;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.row {
+    margin-left: 20px;
+}
