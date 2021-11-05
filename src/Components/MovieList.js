@@ -9,7 +9,7 @@ const MovieList = ({
         <div className="todo-list">
             {initialDetails.map((el) => (
                 <Row>
-                    <MovieItem initialDetail={el} key={el.id} />
+                    <MovieItem initialDetail={el} />
                 </Row>
 
             ))}

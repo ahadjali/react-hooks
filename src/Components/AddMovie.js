@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 import {
     Button,
@@ -11,8 +12,8 @@ import {
 } from "reactstrap";
 
 function AddMovie({ addNewMovie }) {
-    const [addMovie, setAddMovie] = useState(false);
     const [movie, setMovie] = useState({
+        id:uuidv4(),
         image: "",
         title: "",
         year: "",
@@ -30,14 +31,13 @@ function AddMovie({ addNewMovie }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setAddMovie(true);
         addNewMovie(movie);
     };
 
     return (
         <div className="AddMovie">
             <br />
-            <Button style={{ marginLeft:"15px" }} className="add-btn" color="success" onClick={toggle}>
+            <Button style={{ marginLeft: "15px" }} className="add-btn" color="success" onClick={toggle}>
                 Add Movie +
             </Button>
             <Modal isOpen={modal} toggle={toggle}>
@@ -83,7 +83,7 @@ function AddMovie({ addNewMovie }) {
                     >
                         Submit
                     </Button>
-                    {/* {addMovie && <MovieList {...movie} />} */}
+
                     <Button onClick={toggle}
                         className="cancel-btn"
                         color="danger"

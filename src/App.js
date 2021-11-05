@@ -15,6 +15,7 @@ import raees from './Assets/raees.jpg'
 import starwars from './Assets/starwars.jpg'
 import timeless from './Assets/timeless.jpg'
 
+
 function App() {
   const [initialDetails, setinitialDetails] = useState(
     [
@@ -76,30 +77,29 @@ function App() {
       },
     ]);
 
-  const [allData, setAllData] = useState({
-    serachTitleMovie: "",
-    serachRating: 0
-  }
-  );
+  const [searchMovie, setSearchMovie] = useState("");
 
-  // const [filterMovieTitle, setFilterMovieTitle] = useState([allData]);
+  const [searchRating, setSearchRating] = useState(1);
 
   const addNewMovie = (data) => {
-    //console.log (data)
     setinitialDetails(initialDetails.concat(data))
-  }
-  const handleChange = (e) => {
-    e.preventDefault();
-    setAllData({ serachTitleMovie: e.target.value })
-  }
-  // const handleChange = (e) => {
-  //   setAllData({ ...allData, [e.target.name]: e.target.value });
-  // };
+  };
+
+  const searchMovieByName = (name) => {
+    setSearchMovie(name.target.value);
+  };
+
+  const searchMovieByRating = (numRating) => {
+    setSearchRating(numRating);
+  };
 
   return (
     <div className="movie-list">
-      <SearchMovie key={initialDetails.id} handleChange={handleChange} />
-      <MovieList initialDetails={initialDetails} />
+      <SearchMovie searchMovieByName={searchMovieByName} searchMovieByRating={searchMovieByRating} searchRating={searchRating}/>
+      <MovieList initialDetails={initialDetails.filter(el =>
+        el.title.toUpperCase().includes(searchMovie.toUpperCase().trim()) &&
+        el.rating>=searchRating )}
+      />
       <AddMovie addNewMovie={addNewMovie} />
     </div>
   );

@@ -1,26 +1,17 @@
 import './SearchMovie.css'
-import { RiSearch2Line } from 'react-icons/ri'
-import { Component } from 'react';
+import StarRating from "./StarRating";
 
-class SearchMovie extends Component {
-    //console.log(allData)
-    render() {
-        return (
-
-            <div className="input-container">
-                <input
-                    placeholder="Searching movie..."
-                    className="search"
-                    // name="allData"
-                    // value={this.props.allData}
-                    onChange={this.props.handleChange}
-                />
-                <button>
-                    <RiSearch2Line />
-                </button>
-            </div>
-        );
-    }
-
+const SearchMovie = ({ searchMovieByName, searchMovieByRating, searchRating }) => {
+    return (
+        <div className="input-container">
+            <input
+                type="search"
+                placeholder="Searching movie..."
+                className="search"
+                onChange={searchMovieByName}
+            />
+            <StarRating rating={searchRating} searchMovieByRating={searchMovieByRating} />
+        </div>
+    );
 };
 export default SearchMovie;

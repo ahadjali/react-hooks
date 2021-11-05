@@ -1,16 +1,6 @@
-button {
+.star-rating {
   background-color: transparent;
   border: none;
   outline: none;
   cursor: pointer;
-}
-.on {
-  color: gold;
-}
-.off {
-  color: #ccc;
-}
-
-.star {
-    font-size:smaller;
 }
